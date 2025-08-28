@@ -1,0 +1,284 @@
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Skip Link */
+.skip-to-content {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.skip-to-content:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 10px;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:focus-visible {
+    outline: 2px solid #fff;
+}
+
+.logo {
+    width: 120px;
+}
+
+/* Hero Section */
+.hero {
+    background-color: #0052cc;
+    color: #fff;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+/* Devices Section */
+#flagships {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 40px 20px;
+}
+
+#flagships > h2 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.device {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: calc(33.333% - 20px);
+    text-align: center;
+}
+
+.device button,
+.device a[type="button"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.device button:hover,
+.device a[type="button"]:hover {
+    background-color: #0056b3;
+}
+
+.device button:focus-visible,
+.device a[type="button"]:focus-visible {
+    outline: 2px solid #fff;
+}
+
+/* Carousel */
+.carousel {
+    margin: 40px 0;
+}
+
+.carousel-inner {
+    display: flex;
+    overflow-x: auto;
+}
+
+.carousel-item {
+    flex: none;
+    width: 100%;
+    text-align: center;
+}
+
+.carousel-item[aria-hidden="true"] {
+    display: none;
+}
+
+.carousel-item.active {
+    display: block;
+}
+
+.carousel-control:focus-visible {
+    outline: 2px solid #fff;
+}
+
+/* Testimonials */
+.testimonial-slider {
+    background-color: #f8f9fa;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+blockquote {
+    font-style: italic;
+    margin: 20px 0;
+}
+
+blockquote cite {
+    display: block;
+    color: #999;
+    font-size: 0.9em;
+}
+
+/* Contact Form */
+#contact {
+    padding: 40px 20px;
+}
+
+#contact form {
+    max-width: 500px;
+    margin: auto;
+}
+
+#contact input,
+#contact textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#contact input:focus,
+#contact textarea:focus,
+#contact input:focus-visible,
+#contact textarea:focus-visible {
+    outline: 2px solid #007bff;
+}
+
+#contact button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#contact button:hover {
+    background-color: #218838;
+}
+
+#contact button:focus-visible {
+    outline: 2px solid #28a745;
+}
+
+/* Footer */
+footer {
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 20px 10px;
+}
+
+.social-links a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.social-links a:focus-visible {
+    outline: 2px solid #fff;
+}
+
+.newsletter form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.newsletter input,
+.newsletter button {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.newsletter input {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.newsletter button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.newsletter button:focus-visible,
+.newsletter input:focus-visible {
+    outline: 2px solid #007bff;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .device {
+        width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    #flagships {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .device {
+        width: 90%;
+    }
+
+    .newsletter form {
+        flex-direction: column;
+    }
+
+    .newsletter input {
+        margin-bottom: 10px;
+    }
+}
