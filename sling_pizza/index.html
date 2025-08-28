@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sling Pizza</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script defer src="scripts/main.js"></script>
+</head>
+<body>
+    <header>
+        <div class="brand-logo">Sling</div>
+        <nav aria-label="Primary">
+            <a href="#">Home</a>
+            <a href="#">Menu</a>
+            <a href="#">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <h1 class="visually-hidden">Sling Pizza</h1>
+        <section aria-label="Pizza gallery">
+            <p>Click or use arrow keys to browse</p>
+            <div class="gallery-item">
+                <img src="https://imgmediagumlet.lbb.in/media/2020/11/5fa17943d511fc4b649fcfc2_1604417859096.jpg" alt="Delicious Sling Pizza 1" loading="lazy" decoding="async">
+            </div>
+            <div class="gallery-item">
+                <img src="https://curlytales.com/wp-content/uploads/2019/09/pizza-feature.jpg" alt="Delicious Sling Pizza 2" loading="lazy" decoding="async">
+            </div>
+            <div class="gallery-item">
+                <img src="https://bhukkadcompany.com/wp/wp-content/uploads/2024/06/21-Best-Pizzas-in-Mumbai-You-Must-Try-A-Pizza-Lovers-Paradise-1-710x473.png" alt="Delicious Sling Pizza 3" loading="lazy" decoding="async">
+            </div>
+        </section>
+        <section class="information">
+            <h2>About Sling Pizza</h2>
+            <p>Welcome to Sling Pizza, your go-to destination for delicious, handmade pizzas. We source the finest ingredients for a taste you won't forget. Order now and enjoy a slice of perfection.</p>
+        </section>
+    </main>
+    <footer id="contact">
+        <form class="contact-form" method="post" action="#">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required autocomplete="name" minlength="2" pattern="[A-Za-zÀ-ž\s'-]+">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required autocomplete="email">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" placeholder="Your Message" required autocomplete="off" minlength="10"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </footer>
+</body>
+</html>
