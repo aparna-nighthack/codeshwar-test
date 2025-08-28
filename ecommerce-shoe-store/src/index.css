@@ -1,0 +1,86 @@
+/* Global/base stylesheet for the e-commerce shoe website */
+/* This file includes basic global styling such as resets, fonts, and color variables */
+
+/* Box-sizing reset to include pseudo-elements */
+html {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* Resetting default margins and paddings */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Setting a default font for the entire application */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* Basic responsive image styling */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Global anchor base style for consistent link appearance */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+a:hover, a:focus, a:active {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Baseline for interactive elements */
+button, input, select, textarea {
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+}
+button:hover, button:focus,
+input:hover, input:focus,
+select:hover, select:focus,
+textarea:hover, textarea:focus {
+  outline: 1px dashed #007bff;
+}
+
+/* Introduction of CSS custom properties for core theme tokens */
+:root {
+  --primary-color: #007bff;
+  --text-color: #333;
+  --background-color: #f4f4f4;
+}
+
+/* Apply custom properties */
+body {
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+/* Layout handling */
+html, body, #root {
+  height: 100%;
+  min-height: 100%;
+}
+
+/* Basic styling for the main container - ensures it stays global and neutral */
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
