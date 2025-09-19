@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeForge Hackathon</title>
+    <meta name="description" content="CodeForge Hackathon — Build. Ship. Shine. Join us for an electrifying weekend of collaboration, code, and creativity." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <header class="nav" id="top">
+      <div class="container nav-inner">
+        <a class="brand" href="#top">CodeForge</a>
+        <nav>
+          <a href="#about">About</a>
+          <a href="#register">Register</a>
+          <a href="#schedule">Schedule</a>
+          <a href="#prizes">Prizes</a>
+          <a href="#sponsors">Sponsors</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#updates">Live</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero" aria-label="CodeForge hero"
+        data-event-date="">
+        <div class="hero-bg" role="img" aria-label="Participants collaborating at a hackathon"></div>
+        <div class="container hero-content">
+          <h1 class="title">CodeForge Hackathon</h1>
+          <p class="subtitle">Forge ideas into reality — 48 hours, one epic sprint.</p>
+
+          <div class="countdown" aria-live="polite" aria-label="Countdown timer">
+            <div class="time"><span id="days">00</span><label>Days</label></div>
+            <div class="sep">:</div>
+            <div class="time"><span id="hours">00</span><label>Hours</label></div>
+            <div class="sep">:</div>
+            <div class="time"><span id="minutes">00</span><label>Minutes</label></div>
+            <div class="sep">:</div>
+            <div class="time"><span id="seconds">00</span><label>Seconds</label></div>
+          </div>
+
+          <a class="cta" href="#register">Register Now</a>
+        </div>
+        <div class="hero-gradient"></div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="section reveal">
+        <div class="container">
+          <h2>About CodeForge</h2>
+          <p>
+            CodeForge is a high-energy hackathon where developers, designers, and innovators unite to build breakthrough projects. Expect rapid prototyping, expert mentoring, and a showcase finale with neon-lit glory.
+          </p>
+        </div>
+      </section>
+
+      <!-- Registration -->
+      <section id="register" class="section reveal">
+        <div class="container grid-2">
+          <div class="reg-intro">
+            <h2>Register Your Team</h2>
+            <p>Spots are limited. Assemble your team and lock in your place.</p>
+            <ul class="bullets">
+              <li>Teams of up to 5</li>
+              <li>All levels welcome</li>
+              <li>In-person + hybrid support</li>
+            </ul>
+          </div>
+          <form id="regForm" class="card neon-border" autocomplete="on" aria-label="Team registration form">
+            <div class="field">
+              <label for="teamName">Team Name</label>
+              <input id="teamName" name="teamName" type="text" placeholder="Your team’s name" required />
+            </div>
+            <div class="field">
+              <label for="email">Contact Email</label>
+              <input id="email" name="email" type="email" placeholder="you@team.com" required />
+            </div>
+            <div class="field">
+              <label for="size">Team Size</label>
+              <select id="size" name="size" required>
+                <option value="" disabled selected>Select size</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="track">Track</label>
+              <select id="track" name="track">
+                <option>Open Innovation</option>
+                <option>AI/ML</option>
+                <option>FinTech</option>
+                <option>HealthTech</option>
+                <option>Web3</option>
+              </select>
+            </div>
+            <button class="btn-primary" type="submit">Submit Registration</button>
+            <p id="formMsg" class="form-msg" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+      <!-- Schedule -->
+      <section id="schedule" class="section reveal">
+        <div class="container">
+          <h2>Schedule</h2>
+          <div id="timeline" class="timeline" aria-label="Event schedule timeline"></div>
+        </div>
+      </section>
+
+      <!-- Prizes -->
+      <section id="prizes" class="section reveal">
+        <div class="container">
+          <h2>Prizes</h2>
+          <div class="cards">
+            <article class="card prize neon-hover">
+              <h3>Grand Prize</h3>
+              <p>$5,000 + Trophy + Incubator Fast-Track</p>
+            </article>
+            <article class="card prize neon-hover">
+              <h3>Runner-Up</h3>
+              <p>$2,000 + Gear Bundle</p>
+            </article>
+            <article class="card prize neon-hover">
+              <h3>Best AI/ML</h3>
+              <p>$1,000 + Cloud Credits</p>
+            </article>
+            <article class="card prize neon-hover">
+              <h3>Community Choice</h3>
+              <p>$1,000 + Swag Pack</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sponsors -->
+      <section id="sponsors" class="section reveal">
+        <div class="container">
+          <h2>Sponsors</h2>
+          <div class="cards sponsors">
+            <article class="card sponsor neon-hover">
+              <h3>NeonCloud</h3>
+              <p>Cloud Infrastructure Partner</p>
+            </article>
+            <article class="card sponsor neon-hover">
+              <h3>Magenta Labs</h3>
+              <p>AI Research Partner</p>
+            </article>
+            <article class="card sponsor neon-hover">
+              <h3>CyanWave</h3>
+              <p>DevTools Partner</p>
+            </article>
+            <article class="card sponsor neon-hover">
+              <h3>Electric Blue</h3>
+              <p>FinTech Partner</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gallery -->
+      <section id="gallery" class="section reveal">
+        <div class="container">
+          <h2>Past Events</h2>
+          <div class="gallery-grid">
+            <figure class="gallery-item">
+              <img src="https://images.squarespace-cdn.com/content/v1/63d40fe2cbd65e16cb8098b6/0917d0ee-e084-4e2c-9a46-7d19509d5447/Screen%2BShot%2B2023-08-28%2Bat%2B12.51.34%2BPM.png" alt="Teams collaborating during a hackathon" />
+              <figcaption>Teams in full sprint</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <img src="https://contentstatic.techgig.com/photo/69114176.cms" alt="Hackers coding at night" />
+              <figcaption>Late-night breakthroughs</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <img src="https://www.gsma.com/solutions-and-impact/gsma-open-gateway/wp-content/uploads/2025/03/Open-Gateway-Hackthon-Photo-1-1024x683.jpg" alt="Hackathon demo day stage" />
+              <figcaption>Demo day energy</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- Live Updates -->
+      <section id="updates" class="section reveal">
+        <div class="container">
+          <div class="updates-head">
+            <h2>Live Updates</h2>
+            <span class="live-dot" aria-hidden="true"></span>
+          </div>
+          <ul id="updatesFeed" class="updates-feed" aria-live="polite"></ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>© <span id="year"></span> CodeForge. All rights reserved.</p>
+        <a href="#top" class="back-to-top">Back to top ↑</a>
+      </div>
+    </footer>
+
+    <div class="bg-blurs" aria-hidden="true">
+      <div class="blur b1"></div>
+      <div class="blur b2"></div>
+      <div class="blur b3"></div>
+    </div>
+
+    <script src="assets/script.js"></script>
+  </body>
+  </html>
+
