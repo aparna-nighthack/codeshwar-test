@@ -1,110 +1,73 @@
 #!/usr/bin/env python3
 """
-Fibonacci series utility.
+Fibonacci series generator CLI.
 
 Usage examples:
-  - First N numbers:    python3 fibonacci.py --count 10
-  - Up to a limit:      python3 fibonacci.py --limit 100
-  - N-th number (0-indexed): python3 fibonacci.py --nth 20
+  - First 10 terms:   python fibonacci.py --terms 10
+  - Up to value 100:  python fibonacci.py --max 100
 
-Notes:
-  - Sequence starts at 0, 1, 1, 2, 3, ...
-  - "--nth" is 0-indexed (n=0 -> 0, n=1 -> 1).
+By default prints the first 10 terms if no option is given.
 """
 
 from __future__ import annotations
 
 import argparse
-import sys
-from typing import Iterable, Optional
+from typing import Iterator, List
 
 
-def fib_sequence(*, count: Optional[int] = None, limit: Optional[int] = None) -> Iterable[int]:
-    """Generate Fibonacci numbers.
+def fibonacci_terms(n: int) -> Iterator[int]:
+    """Yield the first n Fibonacci numbers starting from 0.
 
-    Exactly one of `count` or `limit` must be provided.
-
-    - If `count` is set, yields the first `count` numbers starting at 0.
-    - If `limit` is set, yields numbers <= `limit`.
+    Example for n=6: 0, 1, 1, 2, 3, 5
     """
-    if (count is None) == (limit is None):
-        raise ValueError("Provide exactly one of 'count' or 'limit'.")
-
-    a, b = 0, 1
-
-    if count is not None:
-        if count < 0:
-            raise ValueError("count must be non-negative")
-        for _ in range(count):
-            yield a
-            a, b = b, a + b
+    if n <= 0:
         return
-
-    # limit mode
-    if limit is None:
-        raise ValueError("limit must not be None when count is None")
-    while a <= limit:
+    a, b = 0, 1
+    for _ in range(n):
         yield a
         a, b = b, a + b
 
 
-def fib_n(n: int) -> int:
-    """Return the n-th Fibonacci number (0-indexed).
-
-    Examples: fib_n(0)=0, fib_n(1)=1, fib_n(2)=1, fib_n(3)=2, ...
-    """
-    if n < 0:
-        raise ValueError("n must be non-negative")
+def fibonacci_upto(max_value: int) -> Iterator[int]:
+    """Yield Fibonacci numbers up to and including max_value (>= 0)."""
+    if max_value < 0:
+        return
     a, b = 0, 1
-    for _ in range(n):
+    while a <= max_value:
+        yield a
         a, b = b, a + b
-    return a
 
 
-def parse_args(argv: list[str]) -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Generate Fibonacci numbers.")
-    group = parser.add_mutually_exclusive_group(required=True)
-    group.add_argument(
-        "--count",
-        type=int,
-        help="Print the first N Fibonacci numbers (starting at 0)",
-    )
-    group.add_argument(
-        "--limit",
-        type=int,
-        help="Print Fibonacci numbers up to LIMIT (inclusive)",
-    )
-    group.add_argument(
-        "--nth",
-        type=int,
-        help="Print the n-th Fibonacci number (0-indexed)",
-    )
+def parse_args(argv: List[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Print Fibonacci series")
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument("--terms", type=int, help="number of terms to print (>= 0)")
+    group.add_argument("--max", dest="max_value", type=int, help="print terms up to this value (>= 0)")
+    parser.add_argument("--sep", default=", ", help="separator between numbers (default: ', ')")
     return parser.parse_args(argv)
 
 
-def main(argv: list[str] | None = None) -> int:
-    ns = parse_args(argv if argv is not None else sys.argv[1:])
+def main(argv: List[str] | None = None) -> None:
+    args = parse_args(argv)
 
-    try:
-        if ns.count is not None:
-            seq = list(fib_sequence(count=ns.count))
-            print(" ".join(str(x) for x in seq))
-            return 0
-        if ns.limit is not None:
-            if ns.limit < 0:
-                print("")
-                return 0
-            seq = list(fib_sequence(limit=ns.limit))
-            print(" ".join(str(x) for x in seq))
-            return 0
-        # nth
-        print(fib_n(ns.nth))
-        return 0
-    except ValueError as e:
-        print(f"Error: {e}", file=sys.stderr)
-        return 2
+    if args.terms is None and args.max_value is None:
+        # Default: first 10 terms
+        args.terms = 10
+
+    if args.terms is not None:
+        n = args.terms
+        if n < 0:
+            raise SystemExit("--terms must be >= 0")
+        series = list(fibonacci_terms(n))
+    else:
+        mv = args.max_value
+        if mv < 0:
+            raise SystemExit("--max must be >= 0")
+        series = list(fibonacci_upto(mv))
+
+    print(args.sep.join(str(x) for x in series))
 
 
-if __name__ == "__main__":  # pragma: no cover
-    raise SystemExit(main())
+if __name__ == "__main__":
+    main()
 
