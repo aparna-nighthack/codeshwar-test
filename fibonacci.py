@@ -19,9 +19,17 @@ from typing import Iterator, List
 
 
 def fib_terms(n: int) -> Iterator[int]:
-    """Yield the first n Fibonacci numbers (starting at 0).
-
-    Raises ValueError if n < 0.
+    """
+    Generate the first n Fibonacci numbers starting from 0.
+    
+    Parameters:
+        n (int): Number of terms to generate; must be >= 0.
+    
+    Returns:
+        iterator (Iterator[int]): An iterator that yields n Fibonacci numbers beginning with 0.
+    
+    Raises:
+        ValueError: If `n` is less than 0.
     """
     if n < 0:
         raise ValueError("n must be >= 0")
@@ -32,7 +40,15 @@ def fib_terms(n: int) -> Iterator[int]:
 
 
 def fib_upto(max_value: int) -> Iterator[int]:
-    """Yield Fibonacci numbers up to and including max_value."""
+    """
+    Yield Fibonacci numbers up to and including max_value.
+    
+    Parameters:
+        max_value (int): Inclusive upper bound for generated values; if less than 0, the generator yields no values.
+    
+    Returns:
+        Iterator[int]: Fibonacci numbers starting at 0 and continuing while each value is less than or equal to max_value.
+    """
     a, b = 0, 1
     while a <= max_value:
         yield a
@@ -40,6 +56,17 @@ def fib_upto(max_value: int) -> Iterator[int]:
 
 
 def parse_args() -> argparse.Namespace:
+    """
+    Parse command-line arguments for the Fibonacci script.
+    
+    Provides a required mutually exclusive choice between:
+    - --terms / -n: number of Fibonacci terms to print (integer >= 1 expected),
+    - --max-value / -m: print all Fibonacci terms less than or equal to this value (integer >= 0 expected).
+    Also accepts --sep to customize the output separator (default: ", ").
+    
+    Returns:
+        argparse.Namespace: Parsed arguments with attributes `terms` (int or None), `max_value` (int or None), and `sep` (str).
+    """
     parser = argparse.ArgumentParser(
         description="Print a Fibonacci series by count or max value.",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
@@ -66,6 +93,14 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> None:
+    """
+    Run the command-line interface: parse arguments, generate the requested Fibonacci sequence, and print it using the configured separator.
+    
+    Parses command-line options produced by parse_args(); if the --terms option is provided, validates it and generates the first N Fibonacci numbers, otherwise validates --max-value and generates all Fibonacci numbers up to that value. The resulting sequence is printed with elements joined by the provided separator.
+    
+    Raises:
+    	SystemExit: If --terms is less than 1 or --max-value is less than 0.
+    """
     args = parse_args()
 
     if args.terms is not None:
